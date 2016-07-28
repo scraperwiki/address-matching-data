@@ -14,6 +14,9 @@ if __name__ == '__main__':
 
     # read map
     for row in csv.DictReader(sys.stdin):
+        if row["CloseDate"]:
+            continue
+
         item = {}
         item['test'] = "school:" + row['URN']
         item['name'] = row['EstablishmentName']
