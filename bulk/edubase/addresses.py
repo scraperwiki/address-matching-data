@@ -5,7 +5,7 @@ import csv
 import re
 
 address_fields = ["Street", "Locality", "Address3", "Town", "County (name)"]
-fields = [ "test", "name", "text", "postcode" ]
+fields = ["test", "name", "text", "postcode"]
 sep = "\t"
 
 if __name__ == '__main__':
