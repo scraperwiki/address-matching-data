@@ -17,7 +17,8 @@ ZIPS=\
 all:	addresses.tsv
 
 addresses.tsv:	addresses.py $(ZIPS)
-	for f in $(ZIPS) ; do funzip $$f | ./addresses.py ; done > $@
+	for f in $(ZIPS) ; do funzip $$f | ./addresses.py ; done > $@.new
+	mv $@.new $@
 
 
 #
