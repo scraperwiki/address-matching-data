@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
-import sys
 import csv
+import hashlib
 import re
+import struct
+import sys
 
 address_cols = range(7, 13)
 export_fields = ["test", "text", "postcode"]
@@ -23,14 +25,14 @@ def make_hash_int(text):
 
 if __name__ == '__main__':
 
-    print(sep.join(fields))
+    print(sep.join(export_fields))
 
     duplicates = 0
     seen = set()
 
     # read map
     for row in csv.reader(sys.stdin):
-        hash_int = make_hash_int(row["text"])
+        hash_int = make_hash_int(row[0])
         if hash_int in seen:
             duplicates += 1
             # raise RuntimeError("collision: {}, {}", hash_int, row["text"])
@@ -44,4 +46,4 @@ if __name__ == '__main__':
 
         item['postcode'] = row[3]
 
-        print(sep.join([item[field] for field in fields]))
+        print(sep.join([item[field] for field in export_fields]))
